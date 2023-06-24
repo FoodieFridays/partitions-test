@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css" />
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+
+    <py-env>
+- matplotlib
+- paths:
+    ./main.py
+    </py-env>
+
+    <style>
+        .button:hover {
+            background: #d9d9d9;
+            }
+        .button {
+            text-decoration: none;
+            display: inline;
+            padding: 5px;
+            width: 120px;
+            font-size: 1em;
+            background: #afc7b5;
+            color: darkgreen;
+            font-weight: bold;
+            }
+    </style>
+</head>
+
+<body>
+    <h1>Generate the relative frequency chart for the multiplicities of numbers within a custom partition:</h1>
+
+    <div hidden id="evtMsg">0</div>
+
+    <div id="lineplot"></div>
+    <input type="text" placeholder="Type a natural number here" id="test-input"/>
+    <input type="text" placeholder="Length to examine" id="test-input-2"/>
+    <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Plot</button>
+    <div id="test-output"></div>
+
+    <py-script src="./partition_multiplicities.py"></py-script>
+</body>
+
+</html>
