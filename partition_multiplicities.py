@@ -68,7 +68,7 @@ async def plot_it(*args, **kwargs):
     plt.bar(numbers, relative_freq)
     plt.xlabel("Number")
     plt.ylabel("Relative Frequency")
-    plt.title("Relative Frequency Bar Chart of Number Multiplicities")
+    plt.title("Relative Frequency Bar Chart of Number Multiplicities (of length " + length ")")
     # plt.show()
 
     fig
