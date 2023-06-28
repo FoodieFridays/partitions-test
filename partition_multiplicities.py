@@ -30,8 +30,6 @@ def get_integer_partitions(n):
     return full_list
 
 
-#
-#
 async def Process_Button(event):
     if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
         fig = await plot_it()
