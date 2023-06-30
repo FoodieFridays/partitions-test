@@ -7,11 +7,11 @@ from pyodide import create_proxy
 import numpy as np
 
 
-def Setup_Button_Listeners():
+def setup_button_listeners():
     btnList = document.querySelectorAll(".button")
     for i in range(len(btnList)):
         e = document.getElementById(btnList[i].id)
-        btn_event = create_proxy(Process_Button)
+        btn_event = create_proxy(process_button)
         e.addEventListener("click", btn_event)
 
 
@@ -32,18 +32,17 @@ def get_integer_partitions(n):
     return full_list
 
 
-async def Process_Button(event):
-    if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
-        fig = await plot_it()
-        # pyscript.write('lineplot', fig)
+async def process_button(event):
+    if document.getElementById("evtMsg").innerHTML == '100':    # When button is clicked
+        await display_output()
 
 
-async def plot_it(*args, **kwargs):
-    output_box = Element('test-output')
+async def display_output(*args, **kwargs):
+    output_box = Element('output-1')
 
-    text = Element('test-input').element.value
+    text = Element('input-1').element.value
 
-    str_arr = np.array(text.split(","))
+    str_arr = text.split(",")
     int_arr = []
 
     for num in str_arr:
@@ -60,4 +59,4 @@ async def plot_it(*args, **kwargs):
     output_box.write(conjugate)
 
 
-Setup_Button_Listeners()
+setup_button_listeners()

@@ -33,14 +33,14 @@
 </head>
 
 <body>
-    <h1>Generate the Young Diagram for a given partition:</h1>
+    <h1>Generate the conjugate for a given partition:</h1>
 
     <div hidden id="evtMsg">0</div>
 
-    <div id="lineplot"></div>
-    <input type="text" placeholder="Comma-separated partition here" id="test-input"/>
-    <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Plot</button>
-    <div id="test-output"></div>
+    <div id="user-IO"></div>
+    <input type="text" placeholder="Comma-separated partition here" id="input-1"/>
+    <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
+    <div id="output-1"></div>
 
     <py-script src="./conjugate_partition.py"></py-script>
 </body>
