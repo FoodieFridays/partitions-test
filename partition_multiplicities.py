@@ -5,11 +5,11 @@ from pyodide import create_proxy
 import numpy as np
 
 
-def Setup_Button_Listeners():
+def setup_button_listeners():
     btnList = document.querySelectorAll(".button")
     for i in range(len(btnList)):
         e = document.getElementById(btnList[i].id)
-        btn_event = create_proxy(Process_Button)
+        btn_event = create_proxy(process_button)
         e.addEventListener("click", btn_event)
 
 
@@ -30,15 +30,15 @@ def get_integer_partitions(n):
     return full_list
 
 
-async def Process_Button(event):
+async def process_button(event):
     if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
-        fig = await plot_it()
-        pyscript.write('lineplot', fig)
+        fig = await display_output()
+        pyscript.write('user-IO', fig)
 
 
-async def plot_it(*args, **kwargs):
-    num = Element('test-input').element.value
-    length = Element('test-input-2').element.value
+async def display_output(*args, **kwargs):
+    num = Element('input-1').element.value
+    length = Element('input-2').element.value
 
     partitions = get_integer_partitions(int(num))
     fig, ax = plt.subplots()
@@ -69,8 +69,8 @@ async def plot_it(*args, **kwargs):
     plt.title("Relative Frequency Bar Chart of Number Multiplicities (of length " + length + ")")
     # plt.show()
 
-    fig
+    # fig
     return fig
 
 
-Setup_Button_Listeners()
+setup_button_listeners()

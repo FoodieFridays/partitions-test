@@ -9,11 +9,11 @@ import numpy as np
 # from partitionFunctions import random_part_of_weight
 
 
-def Setup_Button_Listeners():
+def setup_button_listeners():
     btnList = document.querySelectorAll(".button")
     for i in range(len(btnList)):
         e = document.getElementById(btnList[i].id)
-        btn_event = create_proxy(Process_Button)
+        btn_event = create_proxy(process_button)
         e.addEventListener("click", btn_event)
 
 
@@ -34,10 +34,9 @@ def get_integer_partitions(n):
     return full_list
 
 
-async def Process_Button(event):
+async def process_button(event):
     if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
-        fig = await plot_it()
-        # pyscript.write('lineplot', fig)
+        await display_output()
 
 
 def multiplicity_of_idx(i, array):
@@ -63,10 +62,10 @@ def get_multiplicity_vector(array):
     return lamb
 
 
-async def plot_it(*args, **kwargs):
-    output_box = Element('test-output')
+async def display_output(*args, **kwargs):
+    output_box = Element('output-1')
 
-    text = Element('test-input').element.value
+    text = Element('input-1').element.value
 
     remaining_weight = int(text)
     lamb = []
@@ -83,4 +82,4 @@ async def plot_it(*args, **kwargs):
     # return lamb
 
 
-Setup_Button_Listeners()
+setup_button_listeners()

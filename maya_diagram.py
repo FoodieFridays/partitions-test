@@ -1,10 +1,4 @@
-from random import randint
-
-import matplotlib.pyplot as plt
-
-import asyncio
 from pyodide import create_proxy
-import numpy as np
 
 
 def setup_button_listeners():
