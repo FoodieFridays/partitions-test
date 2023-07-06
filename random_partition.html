@@ -33,6 +33,15 @@
 </head>
 
 <body>
+    <nav class="navbar" style="background-color: #000000">
+        <div class="app-header">
+            <a href="/">
+                <img src="./logo.png" class="logo" />
+            </a>
+            <a class="title" href="" style="color: #f0ab3c">Matplotlib</a>
+        </div>
+    </nav>
+    
     <a href="https://foodiefridays.github.io/partitions-test/partition_navigation.html">Back to Navigation</a> 
     <h1>Generate a random partition of a custom weight:</h1>
 
@@ -43,7 +52,9 @@
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
     <div id="output-1"></div>
 
-    <py-script src="./random_partition.py"></py-script>
+    <py-tutor>
+        <py-script src="./random_partition.py"></py-script>
+    </py-tutor>
 </body>
 
 </html>
