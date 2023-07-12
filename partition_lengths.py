@@ -4,6 +4,9 @@ import asyncio
 from pyodide import create_proxy
 import numpy as np
 
+import scipy
+from scipy.stats import *
+
 
 def setup_button_listeners():
     btnList = document.querySelectorAll(".button")
@@ -41,6 +44,7 @@ async def display_output(*args, **kwargs):
 
     partitions = get_integer_partitions(int(text))
     fig, ax = plt.subplots()
+
     # Array to store the various lengths of the partitions
     lengths = [len(lamb) for lamb in partitions]
     unique_lengths, counts = np.unique(lengths, return_counts=True)
@@ -52,6 +56,34 @@ async def display_output(*args, **kwargs):
     plt.xlabel("Length of Lambda")
     plt.ylabel("Relative Frequency")
     plt.title("Relative Frequency Chart of Partition Lengths")
+
+    # Fit various distributions to the data
+    dist_names = ['norm', 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss']
+    best_dist = None
+    best_params = None
+    best_sse = np.inf
+
+    for dist_name in dist_names:
+        dist = getattr(scipy.stats, dist_name)
+        params = dist.fit(lengths)
+        arg = params[:-2]
+        loc = params[-2]
+        scale = params[-1]
+
+        # Calculate sum of squared errors (SSE)
+        pdf = dist.pdf(unique_lengths, loc=loc, scale=scale, *arg)
+        sse = np.sum((relative_freq - pdf) ** 2)
+
+        # Check if current distribution provides a better fit
+        if sse < best_sse:
+            best_dist = dist
+            best_params = params
+            best_sse = sse
+
+    # Plot the best-fitting distribution curve
+    x = np.linspace(min(unique_lengths), max(unique_lengths), 100)
+    y = best_dist.pdf(x, loc=best_params[-2], scale=best_params[-1], *best_params[:-2])
+    plt.plot(x, y, 'r-', linewidth=2)
     # plt.show()
     fig
     return fig
