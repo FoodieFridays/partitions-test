@@ -43,6 +43,8 @@ async def display_output(*args, **kwargs):
     num = Element('input-1').element.value
     length = Element('input-2').element.value
 
+    print("Check123")
+
     partitions = get_integer_partitions(int(num))
     fig, ax = plt.subplots()
     
@@ -95,7 +97,7 @@ async def display_output(*args, **kwargs):
     y = best_dist.pdf(x, loc=best_params[-2], scale=best_params[-1], *best_params[:-2])
     plt.plot(x, y, 'r-', linewidth=2)
     # plt.show()
-    fig
+    # fig        # Commented out
     return fig
 
 
