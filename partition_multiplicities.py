@@ -69,6 +69,7 @@ async def display_output(*args, **kwargs):
     plt.ylabel("Relative Frequency")
     plt.title("Relative Frequency Bar Chart of Number Multiplicities")
 
+'''
     # Fit various distributions to the data
     dist_names = ['norm', 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss']
     best_dist = None
@@ -96,6 +97,7 @@ async def display_output(*args, **kwargs):
     x = np.linspace(min(numbers), max(numbers), 100)
     y = best_dist.pdf(x, loc=best_params[-2], scale=best_params[-1], *best_params[:-2])
     plt.plot(x, y, 'r-', linewidth=2)
+'''
     # plt.show()
     # fig        # Commented out
     return fig
