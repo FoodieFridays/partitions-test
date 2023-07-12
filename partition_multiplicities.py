@@ -4,6 +4,9 @@ import asyncio
 from pyodide import create_proxy
 import numpy as np
 
+import scipy
+from scipy.stats import *
+
 
 def setup_button_listeners():
     btnList = document.querySelectorAll(".button")
@@ -42,34 +45,57 @@ async def display_output(*args, **kwargs):
 
     partitions = get_integer_partitions(int(num))
     fig, ax = plt.subplots()
+    
     # Redefine the partitions list to only contain partitions of the specified length (-1 default value skips this)
-    if int(length) != -1:
-        partitions = [sublist for sublist in partitions if len(sublist) == int(length)]
+    if length != -1:
+        partitions = [sublist for sublist in partitions if len(sublist) == length]
 
-    # Using a dictionary for the multiplicities (keys -> number, values -> multiplicity)
     multiplicities = {}
     total_numbers = 0
 
-    # Count the multiplicities of numbers in the lists
     for lst in partitions:
         for num in lst:
             multiplicities[num] = multiplicities.get(num, 0) + 1
             total_numbers += 1
 
-    # Convert the dictionary values to lists
     numbers = list(multiplicities.keys())
     counts = list(multiplicities.values())
-    # Adjusting for relative frequency
     relative_freq = np.array(counts) / total_numbers
 
-    # matplotlib chart setup
     plt.bar(numbers, relative_freq)
     plt.xlabel("Number")
     plt.ylabel("Relative Frequency")
-    plt.title("Relative Frequency Bar Chart of Number Multiplicities (of length " + length + ")")
-    # plt.show()
+    plt.title("Relative Frequency Bar Chart of Number Multiplicities")
 
-    # fig
+    # Fit various distributions to the data
+    dist_names = ['norm', 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss']
+    best_dist = None
+    best_params = None
+    best_sse = np.inf
+
+    for dist_name in dist_names:
+        dist = getattr(scipy.stats, dist_name)
+        params = dist.fit(numbers)
+        arg = params[:-2]
+        loc = params[-2]
+        scale = params[-1]
+
+        # Calculate sum of squared errors (SSE)
+        pdf = dist.pdf(numbers, loc=loc, scale=scale, *arg)
+        sse = np.sum((relative_freq - pdf) ** 2)
+
+        # Check if current distribution provides a better fit
+        if sse < best_sse:
+            best_dist = dist
+            best_params = params
+            best_sse = sse
+
+    # Plot the best-fitting distribution curve
+    x = np.linspace(min(numbers), max(numbers), 100)
+    y = best_dist.pdf(x, loc=best_params[-2], scale=best_params[-1], *best_params[:-2])
+    plt.plot(x, y, 'r-', linewidth=2)
+    # plt.show()
+    fig
     return fig
 
 
