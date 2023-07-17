@@ -78,7 +78,8 @@ async def display_output(*args, **kwargs):
 
     lamb.sort(reverse=True)
 
-    output_box.write("Array Representation: \(" + str(lamb) + "\), Multiplicity Vector Representation: \(" + get_multiplicity_vector(lamb) + "\)")
+    # output_box.write("Array Representation: \(" + str(lamb) + "\), Multiplicity Vector Representation: \(" + get_multiplicity_vector(lamb) + "\)")
+    output_box.write("\( [1^1,2^2,3^3,4^4,5^5] \)")
     # return lamb
 
 
