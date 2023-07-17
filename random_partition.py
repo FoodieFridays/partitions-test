@@ -78,7 +78,7 @@ async def display_output(*args, **kwargs):
 
     lamb.sort(reverse=True)
 
-    output_box.write("Array Representation: " + str(lamb) + ", Multiplicity Vector Representation: " + get_multiplicity_vector(lamb))
+    output_box.write("Array Representation: \(" + str(lamb) + "\(, Multiplicity Vector Representation: \(" + get_multiplicity_vector(lamb) + "\(")
     # return lamb
 
 
