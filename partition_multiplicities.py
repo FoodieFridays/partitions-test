@@ -68,7 +68,7 @@ async def display_output(*args, **kwargs):
     plt.title("Relative Frequency Bar Chart of Number Multiplicities")
 
     # Fit various distributions to the data
-    dist_names = ['norm', 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss']
+    dist_names = ['norm']        # Removed: , 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss'
     best_dist = None
     best_params = None
     best_sse = np.inf
