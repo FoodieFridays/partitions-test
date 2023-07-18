@@ -43,13 +43,11 @@ async def display_output(*args, **kwargs):
     num = Element('input-1').element.value
     length = Element('input-2').element.value
 
-    print("Check123")
-
     partitions = get_integer_partitions(int(num))
     fig, ax = plt.subplots()
     
     # Redefine the partitions list to only contain partitions of the specified length (-1 default value skips this)
-    if length != -1:
+        if length != -1:
         partitions = [sublist for sublist in partitions if len(sublist) == length]
 
     multiplicities = {}
@@ -69,6 +67,35 @@ async def display_output(*args, **kwargs):
     plt.ylabel("Relative Frequency")
     plt.title("Relative Frequency Bar Chart of Number Multiplicities")
 
+    # Fit various distributions to the data
+    dist_names = ['norm', 'expon', 'gamma', 'exponweib', 'dweibull', 'reciprocal', 'norminvgauss']
+    best_dist = None
+    best_params = None
+    best_sse = np.inf
+
+    for dist_name in dist_names:
+        dist = getattr(scipy.stats, dist_name)
+        params = dist.fit(numbers)
+        arg = params[:-2]
+        loc = params[-2]
+        scale = params[-1]
+
+        # Calculate sum of squared errors (SSE)
+        pdf = dist.pdf(numbers, loc=loc, scale=scale, *arg)
+        sse = np.sum((relative_freq - pdf) ** 2)
+
+        # Check if current distribution provides a better fit
+        if sse < best_sse:
+            best_dist = dist
+            best_params = params
+            best_sse = sse
+
+    # Plot the best-fitting distribution curve
+    x = np.linspace(min(numbers), max(numbers), 100)
+    y = best_dist.pdf(x, loc=best_params[-2], scale=best_params[-1], *best_params[:-2])
+    plt.plot(x, y, 'r-', linewidth=2)
+
+    # plt.show()
     # plt.show()
     # fig        # Commented out
     return fig
