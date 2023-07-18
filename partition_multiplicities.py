@@ -97,7 +97,7 @@ async def display_output(*args, **kwargs):
 
     # plt.show()
     # plt.show()
-    # fig        # Commented out
+    fig        # Commented out
     return fig
 
 
