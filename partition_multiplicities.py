@@ -47,7 +47,7 @@ async def display_output(*args, **kwargs):
     fig, ax = plt.subplots()
     
     # Redefine the partitions list to only contain partitions of the specified length (-1 default value skips this)
-        if length != -1:
+    if length != -1:
         partitions = [sublist for sublist in partitions if len(sublist) == length]
 
     multiplicities = {}
