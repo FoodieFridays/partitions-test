@@ -63,6 +63,17 @@
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
     <div id="output-1"></div>
 
+    <script>
+        let test = document.getElementById("output-1");
+        // katex.render("[1^1,2^2,3^3,4^4,5^5]", test, {
+        //   throwOnError: false,
+        // });
+            // test.innerHTML = "\\([1^1,2^2,3^3,4^4,5^5]\\)";
+    
+        // renderMathInElement(document.body);
+        renderMathInElement(test);
+    </script>
+
     <!-- Test section
     <p>
         \(
