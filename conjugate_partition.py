@@ -56,7 +56,7 @@ async def display_output(*args, **kwargs):
         count = sum(1 for num in int_arr if num >= i)
         conjugate.append(count)
 
-    output_box.write(conjugate)
+    output_box.write("The conjugate partition of \\(" + str(str_arr) + "\\) is \\(" + str(conjugate) + "\\)")
 
 
 setup_button_listeners()
