@@ -71,17 +71,25 @@
     </p>
      -->
 
+    <script>
+        function renderKaTeX() {
+            let output_1 = document.getElementById("output-1");
+            renderMathInElement(output_1);
+        }
+    </script>
+
+    <button onclick="renderKaTeX()">Render LaTeX</button>
     
     <p>
-  	Equation 1: \(x^2 + y^2 + z^2 = 25\)
+  	Equation 1: \(x^2 + y^2 = 25\)
     </p>
     
     <p>
-    List 1: \([1^5,2^7,3^5,4^4,5^1,6^{12}]\)
+    List 1: \([1^5,2^7,3^5,4^4,5^1,6^{12}, 7^7]\)
     </p>
     
     <py-script src="./random_partition.py"></py-script>
-
+<!--
     <script>
         let test = document.getElementById("output-1");
         // katex.render("[1^1,2^2,3^3,4^4,5^5]", test, {
@@ -92,6 +100,7 @@
         // renderMathInElement(document.body);
         renderMathInElement(test);
     </script>
+-->
 </body>
 
 </html>
