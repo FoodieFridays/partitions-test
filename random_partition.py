@@ -50,7 +50,7 @@ def get_multiplicity_vector(array):
     # Using our above multiplicity function to generate the multiplicity vector
     for i in range(len(array)):
         if i == 0:
-            lamb += str(array[i]) + "^" + str(multiplicity_of_idx(i, array))
+            lamb += str(array[i]) + "^{" + str(multiplicity_of_idx(i, array)) + "}"
         elif array[i] != array[i - 1]:
             if i == len(array) - 1:
                 lamb += ", " + str(array[i]) + "^{" + str(multiplicity_of_idx(i, array)) + "}"
