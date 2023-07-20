@@ -53,9 +53,9 @@ def get_multiplicity_vector(array):
             lamb += str(array[i]) + "^" + str(multiplicity_of_idx(i, array))
         elif array[i] != array[i - 1]:
             if i == len(array) - 1:
-                lamb += ", " + str(array[i]) + "^" + str(multiplicity_of_idx(i, array))
+                lamb += ", " + str(array[i]) + "^{" + str(multiplicity_of_idx(i, array)) + "}"
             else:
-                lamb += ", " + str(array[i]) + "^" + str(multiplicity_of_idx(i, array))
+                lamb += ", " + str(array[i]) + "^{" + str(multiplicity_of_idx(i, array)) + "}"
 
     lamb += ")"
 
