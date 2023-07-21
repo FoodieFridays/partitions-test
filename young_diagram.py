@@ -63,7 +63,7 @@ async def process_button(event):
 
 
 async def display_output(*args, **kwargs):
-    plt.rcParams['text.usetex'] = True        # Added for LaTeX
+    # plt.rcParams['text.usetex'] = True        # Added for LaTeX
 
     text = Element('input-1').element.value
 
