@@ -92,7 +92,7 @@ async def display_output(*args, **kwargs):
         count = sum(num >= i for num in s_minus_adjust)
         partition.append(count)
 
-    output_box.write(partition)
+    output_box.write("\\(" + str(partition) + "\\)")
 
 
 setup_button_listeners()
