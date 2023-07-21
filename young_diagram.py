@@ -63,6 +63,7 @@ async def process_button(event):
 
 
 async def display_output(*args, **kwargs):
+    plt.rcParams['text.usetex'] = True        # Added for LaTeX
 
     text = Element('input-1').element.value
 
@@ -90,7 +91,8 @@ async def display_output(*args, **kwargs):
     ax.set_ylim(0, rows)
     ax.set_aspect('equal')
     plt.axis('off')
-    plt.title("Young Diagram for lambda = " + get_multiplicity_vector(int_arr))
+    # plt.title("Young Diagram for lambda = " + get_multiplicity_vector(int_arr))
+    plt.title(r'\textbf{time (s)}')
     # plt.show()
     fig
     return fig
