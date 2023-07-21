@@ -56,8 +56,6 @@ async def display_output(*args, **kwargs):
         count = sum(1 for num in int_arr if num >= i)
         conjugate.append(count)
 
-    # output_box.write("The conjugate partition of \\(" + str(int_arr) + "\\) is \\(" + str(conjugate) + "\\)")
-    output_box.write("\\([1^1,2^2,3^3,4^4,5^5]\\)")
-
+    output_box.write("The conjugate partition of \\(" + str(int_arr) + "\\) is \\(" + str(conjugate) + "\\)")
 
 setup_button_listeners()
