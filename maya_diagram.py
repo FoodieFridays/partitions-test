@@ -93,7 +93,7 @@ async def display_output(*args, **kwargs):
     # Appending the visual diagram to the final output
     maya_output.append(visual + "...")
 
-    output_box_1.write("Numerical Diagram: " + str(maya_output[:len(maya_output) - 1]))
+    output_box_1.write("Numerical Diagram: \\(" + str(maya_output[:len(maya_output) - 1]) + "\\)")
     output_box_2.write("Visual Diagram: " + maya_output[-1])
 
 
