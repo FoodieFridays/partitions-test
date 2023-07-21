@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html>
 
 <head>
@@ -18,8 +19,7 @@
     <!-- To automatically render math in text elements, include the auto-render extension: -->
     <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
         onload="renderMathInElement(document.body);"></script>
-
-<!--
+    
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"
@@ -27,7 +27,6 @@
       crossorigin="anonymous"
       onload="renderMathInElement(document.body);"
     ></script>
--->
 
     <py-env>
 - matplotlib
@@ -75,10 +74,6 @@
     <input type="text" placeholder="Comma-separated partition here" id="input-1"/>
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
     <div id="output-1"></div>
-
-    <p>
-        \( [1^1,2^2,3^3,4^4,5^5] \)
-    </p>
 
     <script>
         function renderKaTeX() {
