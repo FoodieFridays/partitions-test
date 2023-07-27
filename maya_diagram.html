@@ -61,6 +61,12 @@
             color: darkgreen;
             font-weight: bold;
             }
+        .textbox-1 {
+            width: 280px;
+            }
+        .textbox-2 {
+            width: 170px;
+        }
     </style>
 </head>
 
@@ -71,8 +77,8 @@
     <div hidden id="evtMsg">0</div>
 
     <div id="user-IO"></div>
-    <input type="text" placeholder="Comma-separated partition here" id="input-1"/>
-    <input type="text" placeholder="Integer charge here" id="input-2"/>
+    <input type="text" placeholder="Type a comma-separated partition here" id="input-1" class="textbox-1"/>
+    <input type="text" placeholder="Integer charge here" id="input-2" class="textbox-2"/>
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
     <div id="output-1"></div>
     <div id="output-2"></div>
