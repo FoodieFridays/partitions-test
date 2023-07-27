@@ -62,6 +62,9 @@
             color: darkgreen;
             font-weight: bold;
             }
+        .expand-test {
+            width: 120px;
+        }
     </style>
 </head>
 
@@ -72,7 +75,7 @@
     <div hidden id="evtMsg">0</div>
 
     <div id="user-IO"></div>
-    <input type="text" placeholder="Type a natural number here" id="input-1"/>
+    <input type="text" placeholder="Type a natural number here" id="input-1" class="expand-test"/>        <!-- added -->
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
     <div id="output-1"></div>
 
