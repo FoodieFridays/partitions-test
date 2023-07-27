@@ -30,6 +30,12 @@
             color: darkgreen;
             font-weight: bold;
             }
+        .textbox-1 {
+            width: 250px;
+            }
+        .textbox-2 {
+            width: 300px;
+        }
     </style>
 </head>
 
@@ -40,8 +46,8 @@
     <div hidden id="evtMsg">0</div>
 
     <div id="user-IO"></div>
-    <input type="text" placeholder="Type a natural number here" id="input-1"/>
-    <input type="text" placeholder="Length to examine" id="input-2"/>
+    <input type="text" placeholder="Type a natural number weight here" id="input-1" class="textbox-1"/>
+    <input type="text" placeholder="Length to examine (or -1 for all lengths)" id="input-2" class="textbox-2"/>
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
 
     <py-script src="./partition_multiplicities.py"></py-script>
