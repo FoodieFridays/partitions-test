@@ -29,6 +29,9 @@
             color: darkgreen;
             font-weight: bold;
             }
+        .textbox-1 {
+            width: 250px;
+        }
     </style>
 </head>
 
@@ -39,7 +42,7 @@
     <div hidden id="evtMsg">0</div>
 
     <div id="user-IO"></div>
-    <input type="text" placeholder="Comma-separated partition here" id="input-1"/>
+    <input type="text" placeholder="Type a comma-separated partition here" id="input-1" class="textbox-1"/>
     <button id="plot-button" onClick="document.getElementById('evtMsg').innerHTML=100" class="button" style="">Submit</button>
 
     <py-script src="./young_diagram.py"></py-script>
