@@ -1,12 +1,64 @@
 <!DOCTYPE html>
+<!-- KaTeX requires the use of the HTML5 doctype. Without it, KaTeX may not render properly -->
 <html>
-
-<head>
-
-</head>
-
-<body>
-  <h1>Background and Motivation</h1>
-</body>
-
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css" integrity="sha384-GvrOXuhMATgEsSwCs4smul74iXGOixntILdUW9XmUC6+HX0sLNAK3q71HotJqlAn" crossorigin="anonymous">
+        <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js" integrity="sha384-cpW21h6RZv/phavutF+AuVYrr+dA8xD9zs6FwLpaCct6O9ctzYFfFr4dgmgccOTx" crossorigin="anonymous"></script>
+        <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js" integrity="sha384-+VBxd3r6XgURycqtZ117nYw44OOcIax56Z4dCRWbxyPt0Koah1uHoK0o4+/RRE05" crossorigin="anonymous"
+            onload="renderMathInElement(document.body);"></script>
+    </head>
+    <h1>Background, Motivation, and Sources</h1>
+    <hr>
+    <h2>Background:</h2>
+    <h3>Integer Partitions:</h3>
+    A finite\(^1\) integer partition is a sequence $$\lambda = (\lambda_1, \lambda_2, ..., \lambda_r)$$ of non-negative integers listed in weakly decreasing order $$\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_r$$
+    By convention, we do not distinguish between two such sequences differing only by a string of zeros at the end. Hence, we regard \((3,2,1,0), (3,2,1,0,0),\) and \((3,2,1,0,...,0)\) as the same partition.<br><br>
+    Any non-zero \(\lambda_i\) in a partition are called the parts of lambda. The number of parts is the length of \(\lambda\), denoted by \(l(\lambda)\). The sum of the parts is the weight of \(\lambda\), denoted by \(|\lambda|\).
+    $$|\lambda|=\sum_{i=1}^{r}\lambda_i=\lambda_1 + \lambda_2 + ... + \lambda_r$$
+    If \(|\lambda|=n\), we say that \(\lambda\) is a partition of \(n\). The set of all partitions of \(n\) is denoted by \(P_n\).\(^2\)<br><br>
+    It is often convenient to describe a partition using a notation that indicates the number of times each integer occurs as a part (its multiplicity). We refer to this as the partition's multiplicity vector, given by
+    $$\lambda=(\lambda_1^{m_1}, \lambda_2^{m_2}, ..., \lambda_r^{m_r})$$
+    where \(m_i\) is the number of parts that are equal to \(\lambda_i\). If an \(m_i\) value is omitted, we assume that it is equal to 1.<br><br>
+    \(^1\)Partitions can also be an infinite sequence, but we only consider finite partitions for the computations performed on this website.<br>
+    \(^2\)This set is generated using a recursive approach for some of the interactive examples seen on the website.
+    <h3>Young Diagrams and Conjugate Partitions:</h3>
+    Given a partition \(\lambda\), one can produce its Young diagram. This diagram is formally defined as the set of points \((i,j) \in \mathbb{Z}^2\) such that \(1 \leq j \leq \lambda_i\).<br><br>
+    As a clarifying example, given the (multiplicity vector notation) partition \(\lambda=(4,3^{2},2,1)\), its Young diagram is:
+    $$\text{PHOTO HERE!}$$
+    The conjugate of a partition \(\lambda\), denoted \(\lambda'\) is the partition whose Young diagram is the transpose of the Young diagram for \(\lambda\). In other words, it is the diagram obtained by a reflection across the main diagonal.
+    The conjugate of \(\lambda=(4,3^{2},2,1)\) is \(\lambda'=(5,4,3,1)\).
+    <h3>Maya Diagrams:</h3>
+    A Maya diagram is a visual representation of a semi-infinite monomial. A study of semi-infinite monomials is given from Nathan Grieve. A brief introduction regarding Maya diagrams is given as a PDF here. More on Solitons and Infinite Dimensional Lie Algebras is given here.
+    <hr>
+    <h2>Motivation:</h2>
+    The purpose of this website is to provide an interactive interface for users to perform the various computations and view the statistics that arise when studying integer partitions and Maya diagrams. Rather than providing only static examples as many other sources have already done, we emphasize the importance of interactivity, allowing the user to enter custom data. Behind the scenes, Python code is responsible for running all the computations supported.<br><br>
+    In the future, additional computations and statistical output could be added to increase the functionality of this website.<br><br>
+    This website was created during a Dean's Summer Research Internship (DSRI) at Carleton University, under the supervision of Dr. <a href="https://people.math.carleton.ca/~cingalls/">Colin Ingalls<a> and Dr. <a href="https://sites.google.com/view/nathan-grieve">Nathan Grieve<a>. (<a href="https://wevie0.github.io/DSRI/2D/index.html">Click here<a> for the website created for the curves and surfaces portion of this project.)
+    <hr>
+    <h2>Sources/References:</h2>
+    <ul>
+        <li>Mathematical Components:</li>
+        <ul>
+            <li>"Comments Related to Infinite Wedge Representations" article by Nathan Grieve</li>
+            <li>Symmetric Functions and Hall Polynomials textbook by Ian G.</li>
+            <li>"<a href="https://projecteuclid.org/journals/duke-mathematical-journal/volume-8/issue-2/The-distribution-of-the-number-of-summands-in-the-partitions/10.1215/S0012-7094-41-00826-8.short">The distribution of the number of summands in the partitions of a positive integer<a>" paper by Erdös and Lehner</li>
+        </ul>
+        <li>Code Components:</li>
+        <ul>
+            <li><a href="https://www.python.org/">Python 3<a>, and the following libraries:</li>
+            <li><a href="https://matplotlib.org/">Matplotlib<a> (for displaying frequency charts)</li>
+            <li><a href="https://numpy.org/">NumPy<a> (for some mathematical computations and goes hand-in-hand with Matplotlib)</li>
+            <li><a href="https://scipy.org/">SciPy<a> (for finding the distribution of best fit in the statistical output)</li>
+            <li><a href="https://docs.python.org/3/library/asyncio.html">asyncio<a> (for asynchronous input/output in the website)</li>
+            <li><a href="https://pyodide.org/en/stable/">Pyodide<a> (for installing and running Python packages within a browser)</li>
+            <li>Within our HTML environment, we used <a href="https://pyscript.net/">PyScript<a> as a framework to run our Python programs in the background and used <a href="https://katex.org/">KaTeX<a> (a faster MathJax alternative) to render various mathematical elements in \(\LaTeX\)</li>
+        </ul>
+    </ul>
+    <!-- 
+        footnote 1: \footnote{Partitions can also be an infinite sequence, but we only consider finite partitions for the computations performed on this website}  
+           
+           footnote 2: \footnote{This set is generated using a recursive approach for some of the interactive examples seen on the website}
+         -->
 </html>
