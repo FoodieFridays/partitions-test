@@ -104,7 +104,7 @@ async def display_output(*args, **kwargs):
         fig
         return fig
     else:
-        return "That partition is too large to run computations on. Enter a natural number less than or equal to 60 instead."
+        return "That partition is too large to run computations on OR the length value is greater than the weight. Try again with a natural number weight less than or equal to 60, with a valid length."
     
     '''
     num = Element('input-1').element.value
