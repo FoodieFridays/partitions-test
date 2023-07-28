@@ -90,6 +90,7 @@ async def display_output(*args, **kwargs):
         return fig
     else:
         print("That partition is too large to run computations on. Enter a natural number less than or equal to 60 instead.")
+        return "That partition is too large to run computations on. Enter a natural number less than or equal to 60 instead."
 
 
 setup_button_listeners()
