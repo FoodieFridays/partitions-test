@@ -41,6 +41,7 @@ async def process_button(event):
 
 async def display_output(*args, **kwargs):
     text = Element('input-1').element.value
+    print("test123")
 
     if int(text) <= 60:
         partitions = get_integer_partitions(int(text))
