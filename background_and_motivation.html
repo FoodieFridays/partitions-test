@@ -15,25 +15,25 @@
         <hr>
         <h2>Background:</h2>
         <h3>Integer Partitions:</h3>
-        A finite\(^1\) integer partition is a sequence $$\lambda = (\lambda_1, \lambda_2, ..., \lambda_r)$$ of non-negative integers listed in weakly decreasing order $$\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_r$$
+        A <i>finite\(^1\) integer partition</i> is a sequence $$\lambda = (\lambda_1, \lambda_2, ..., \lambda_r)$$ of non-negative integers listed in weakly decreasing order $$\lambda_1 \geq \lambda_2 \geq ... \geq \lambda_r$$
         By convention, we do not distinguish between two such sequences differing only by a string of zeros at the end. Hence, we regard \((3,2,1,0), (3,2,1,0,0),\) and \((3,2,1,0,...,0)\) as the same partition.<br><br>
-        Any non-zero \(\lambda_i\) in a partition are called the parts of lambda. The number of parts is the length of \(\lambda\), denoted by \(l(\lambda)\). The sum of the parts is the weight of \(\lambda\), denoted by \(|\lambda|\).
+        Any non-zero \(\lambda_i\) in a partition are called the <i>parts</i> of lambda. The number of parts is the <i>length</i> of \(\lambda\), denoted by \(l(\lambda)\). The sum of the parts is the <i>weight</i> of \(\lambda\), denoted by \(|\lambda|\).
         $$|\lambda|=\sum_{i=1}^{r}\lambda_i=\lambda_1 + \lambda_2 + ... + \lambda_r$$
-        If \(|\lambda|=n\), we say that \(\lambda\) is a partition of \(n\). The set of all partitions of \(n\) is denoted by \(P_n\).\(^2\)<br><br>
-        It is often convenient to describe a partition using a notation that indicates the number of times each integer occurs as a part (its multiplicity). We refer to this as the partition's multiplicity vector, given by
+        If \(|\lambda|=n\), we say that \(\lambda\) is a <i>partition of</i> \(n\). The <i>set of all partitions of</i> \(n\) is denoted by \(P_n\).\(^2\)<br><br>
+        It is often convenient to describe a partition using a notation that indicates the number of times each integer occurs as a part (its multiplicity). We refer to this as the partition's <i>multiplicity vector</i>, given by
         $$\lambda=(\lambda_1^{m_1}, \lambda_2^{m_2}, ..., \lambda_r^{m_r})$$
         where \(m_i\) is the number of parts that are equal to \(\lambda_i\). If an \(m_i\) value is omitted, we assume that it is equal to 1.<br><br>
         \(^1\)Partitions can also be an infinite sequence, but we only consider finite partitions for the computations performed on this website.<br>
         \(^2\)This set is generated using a recursive approach for some of the interactive examples seen on the website.
         <h3>Young Diagrams and Conjugate Partitions:</h3>
-        Given a partition \(\lambda\), one can produce its Young diagram. This diagram is formally defined as the set of points \((i,j) \in \mathbb{Z}^2\) such that \(1 \leq j \leq \lambda_i\). Some sources prefer to use squares instead of points to represent the Young diagram, which is the convention we have adopted for this website.<br><br>
+        Given a partition \(\lambda\), one can produce its <i>Young diagram.</i> This diagram is formally defined as the set of points \((i,j) \in \mathbb{Z}^2\) such that \(1 \leq j \leq \lambda_i\). Some sources prefer to use squares instead of points to represent the Young diagram, which is the convention we have adopted for this website.<br><br>
         As a clarifying example, given the (multiplicity vector notation) partition \(\lambda=(4,3^{2},2,1)\), its Young diagram is:
         <center><img src="43321_partition.png" alt="Young diagram for partition 43321." width="92" height="115"></center>
-        The conjugate of a partition \(\lambda\), denoted \(\lambda'\) is the partition whose Young diagram is the transpose of the Young diagram for \(\lambda\). In other words, it is the diagram obtained by a reflection across the main diagonal.
+        The <i>conjugate</i> of a partition \(\lambda\), denoted \(\lambda'\) is the partition whose Young diagram is the transpose of the Young diagram for \(\lambda\). In other words, it is the diagram obtained by a reflection across the main diagonal.
         The conjugate of \(\lambda=(4,3^{2},2,1)\) is \(\lambda'=(5,4,3,1)\).
         <center><img src="43321_conjugate.png" alt="Conjugate Young diagram for partition 43321." width="144" height="115"></center>
         <h3>Maya Diagrams:</h3>
-        A Maya diagram is a visual representation of a semi-infinite monomial. A study of semi-infinite monomials is given <a href="semi_infinite_grieve.pdf" target="_blank">here<a> from Nathan Grieve. A brief introduction regarding Maya diagrams is given <a href="maya_diagram_intro.pdf" target="_blank">here<a>. For additional reading, information regarding Solitons and Infinite Dimensional Lie Algebras is given <a href="https://ems.press/content/serial-article-files/3160" target="_blank">here<a>.
+        A <i>Maya diagram</i> is a visual representation of a semi-infinite monomial. A study of semi-infinite monomials is given <a href="semi_infinite_grieve.pdf" target="_blank">here<a> from Nathan Grieve. A brief introduction regarding Maya diagrams is given <a href="maya_diagram_intro.pdf" target="_blank">here<a>. For additional reading, information regarding Solitons and Infinite Dimensional Lie Algebras is given <a href="https://ems.press/content/serial-article-files/3160" target="_blank">here<a>.
         <hr>
         <h2>Motivation:</h2>
         The purpose of this website is to provide an interactive interface for users to perform the various computations and view the statistics that arise when studying integer partitions and Maya diagrams. Rather than providing only static examples as many other sources have already done, we emphasize the importance of interactivity, allowing the user to enter custom data. Behind the scenes, Python code is responsible for running all the computations supported.<br><br>
