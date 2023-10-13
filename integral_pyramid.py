@@ -70,7 +70,7 @@ async def display_output(*args, **kwargs):
     ax.set_aspect('equal', adjustable='box')
     ax.axis('off')
 
-    # plt.show()
+    plt.show()
     fig
     return fig
 
