@@ -4,7 +4,9 @@ import matplotlib.pyplot as plt
 
 import asyncio
 from pyodide import create_proxy
-import numpy as np
+
+import numpy
+from numpy.polynomial import Polynomial
 
 
 def setup_button_listeners():
@@ -42,20 +44,35 @@ async def display_output(*args, **kwargs):
 
     text = Element('input-1').element.value
 
-    str_arr = text.split(",")
-    int_arr = []
+    n = int(text)
+    
+    polynomials = []
+        
+    for i in range(n):
+        polynomials.append([0] * (n + 1))
+        polynomials[i][0] = 1
+    
+        for j in range(1, n + 1):
+            if (i + 1) * j <= n:
+                polynomials[i][(i + 1) * j] = 1
+    
+    polynomials_numpy = []
+    
+    for i in range(len(polynomials)):
+        polynomials_numpy.append(Polynomial(polynomials[i]))
+    
+    result = polynomials_numpy[0]
+    
+    for i in range(1, len(polynomials_numpy)):
+        result = numpy.polymul(result, polynomials_numpy[i])[0]
+    
+    str_result = str(result)
+    p_n = float(str_result[str_result.find("x**" + str(n - 1)) + len("x**" + str(n)) + 3:str_result.find("x**" + str(n))])
+    
+    # print("\nPolynomial Expansion:\n")
+    # print(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
+    # print("Thus, the number of integer partitions of weight n=" + str(n) + " is " + str(p_n))
 
-    for num in str_arr:
-        int_arr.append(int(num))
-
-    max_value = max(int_arr)
-    conjugate = []
-
-    # This determines each part of the conjugate partition
-    for i in range(1, max_value + 1):
-        count = sum(1 for num in int_arr if num >= i)
-        conjugate.append(count)
-
-    output_box.write("The conjugate partition of \\(" + str(int_arr) + "\\) is \\(" + str(conjugate) + "\\)")
+    output_box.write(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
 
 setup_button_listeners()
