@@ -180,4 +180,3 @@ async def display_output(*args, **kwargs):
 
 
 setup_button_listeners()
-'''
