@@ -123,7 +123,7 @@ def setup_button_listeners():
 def get_integral_pyramid(partition):
     partition.sort()
     
-    int_pyr_len = len(partition) + max(partition) - 1
+    int_pyr_len = len(partition) + int(max(partition)) - 1
     outputs = []
     
     for i in range(0, int_pyr_len):
