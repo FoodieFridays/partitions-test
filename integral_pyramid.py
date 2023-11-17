@@ -114,7 +114,7 @@ async def display_output(*args, **kwargs):
     ax.set_ylim(0, max(int_arr))
     ax.set_aspect('equal', adjustable='box')
     ax.axis('off')
-    plt.title("Integral Pyramid for lambda = " + get_multiplicity_vector(int_arr))
+    plt.title("Integral Pyramid for lambda = " + str(int_arr))
 
     plt.show()
     fig
