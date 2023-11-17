@@ -56,6 +56,33 @@ def get_multiplicity_vector(array):
     return lamb
 
 
+def get_int_pyr(partition):
+    partition.sort()
+
+    int_pyr_len = len(partition) + max(partition) - 1
+    outputs = []
+    
+    for i in range(0, int_pyr_len):
+        outputs.append(1)
+    
+    for i in range(1, int_pyr_len):
+        j = i
+        n = 2
+        if i >= len(partition):
+            n += i - len(partition) + 1
+            j = len(partition) - 1
+    
+        while j - 1 > 0 and partition[j - 1] >= n:
+            outputs[i] += 1
+            j -= 1
+            n += 1
+    
+            if j - 1 < 0:
+                break
+    
+    return outputs
+
+
 async def process_button(event):
     if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
         fig = await display_output()
@@ -73,27 +100,22 @@ async def display_output(*args, **kwargs):
     for num in text_arr:
         int_arr.append(int(num))
 
-    int_arr.sort(reverse=True)
-
-    rows = len(int_arr)
-    max_blocks = max(map(int, int_arr))
-
+    int_arr = get_int_pyr(int_arr)
+    
     fig, ax = plt.subplots()
+    current_x = 0
 
-    for row, num_blocks in enumerate(int_arr, 1):
-        num_blocks = int(num_blocks)
-        for i in range(max_blocks):
-            if i < num_blocks:
-                rect = patches.Rectangle((i, rows - row), 1, 1, linewidth=1, edgecolor='black', facecolor='blue')
-                ax.add_patch(rect)
+    for block_height in int_arr:
+        rect = patches.Rectangle((current_x, 0), 1, block_height, linewidth=2, edgecolor='black', facecolor='blue')
+        ax.add_patch(rect)
+        current_x += 1
 
-    ax.set_xlim(0, max_blocks)
-    ax.set_ylim(0, rows)
-    ax.set_aspect('equal')
-    plt.axis('off')
-    plt.title("Young Diagram for lambda = " + get_multiplicity_vector(int_arr))
-    # plt.title(r'\textbf{time (s)}')
-    # plt.show()
+    ax.set_xlim(0, current_x)
+    ax.set_ylim(0, max(int_arr))
+    ax.set_aspect('equal', adjustable='box')
+    ax.axis('off')
+
+    plt.show()
     fig
     return fig
 
