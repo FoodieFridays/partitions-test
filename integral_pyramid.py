@@ -189,29 +189,3 @@ async def display_output(*args, **kwargs):
     return fig
 
 setup_button_listeners()
-
-'''
-    # plt.rcParams['text.usetex'] = True        # Added for LaTeX
-
-    text = Element('input-1').element.value
-
-    user_arr = text.split(",")
-    arr = get_integral_pyramid(user_arr)
-
-    fig, ax = plt.subplots()
-    current_x = 0
-
-    for block_height in arr:
-        rect = patches.Rectangle((current_x, 0), 1, block_height, linewidth=2, edgecolor='black', facecolor='blue')
-        ax.add_patch(rect)
-        current_x += 1
-
-    ax.set_xlim(0, current_x)
-    ax.set_ylim(0, max(arr))
-    ax.set_aspect('equal', adjustable='box')
-    ax.axis('off')
-
-    plt.show()
-    fig
-    return fig
-'''
