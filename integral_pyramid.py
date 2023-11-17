@@ -1,4 +1,3 @@
-'''
 from random import randint
 
 import matplotlib.pyplot as plt
@@ -100,8 +99,8 @@ async def display_output(*args, **kwargs):
 
 
 setup_button_listeners()
-'''
 
+'''
 from random import randint
 
 import matplotlib.pyplot as plt
@@ -189,3 +188,4 @@ async def display_output(*args, **kwargs):
     return fig
 
 setup_button_listeners()
+'''
