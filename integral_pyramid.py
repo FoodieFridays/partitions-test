@@ -91,7 +91,7 @@ async def display_output(*args, **kwargs):
     ax.set_ylim(0, rows)
     ax.set_aspect('equal')
     plt.axis('off')
-    plt.title("Young Diagram for lambda = BLAH")
+    plt.title("Young Diagram for lambda = " + get_multiplicity_vector(int_arr))
     # plt.title(r'\textbf{time (s)}')
     # plt.show()
     fig
@@ -99,93 +99,3 @@ async def display_output(*args, **kwargs):
 
 
 setup_button_listeners()
-
-'''
-from random import randint
-
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-
-import asyncio
-from pyodide import create_proxy
-import numpy as np
-
-
-def setup_button_listeners():
-    btnList = document.querySelectorAll(".button")
-    for i in range(len(btnList)):
-        e = document.getElementById(btnList[i].id)
-        btn_event = create_proxy(process_button)
-        e.addEventListener("click", btn_event)
-
-
-def get_integral_pyramid(partition):
-    partition.sort()
-    
-    int_pyr_len = len(partition) + int(max(partition)) - 1
-    outputs = []
-    
-    for i in range(0, int_pyr_len):
-        outputs.append(1)
-    
-    for i in range(1, int_pyr_len):
-        j = i
-        n = 2
-        if i >= len(partition):
-            n += i - len(partition) + 1
-            j = len(partition) - 1
-    
-        while j - 1 > 0 and partition[j - 1] >= n:
-            outputs[i] += 1
-            j -= 1
-            n += 1
-    
-            if j - 1 < 0:
-                break
-      
-    return outputs
-
-
-async def process_button(event):
-    if document.getElementById("evtMsg").innerHTML == '100':  # button plot_it
-        fig = await display_output()
-        pyscript.write('user-IO', fig)
-
-
-async def display_output(*args, **kwargs):
-    # plt.rcParams['text.usetex'] = True        # Added for LaTeX
-
-    text = Element('input-1').element.value
-
-    text_arr = text.split(",")
-    int_arr = []
-
-    for num in text_arr:
-        int_arr.append(int(num))
-
-    int_arr.sort(reverse=True)
-
-    rows = len(int_arr)
-    max_blocks = max(map(int, int_arr))
-
-    fig, ax = plt.subplots()
-
-    for row, num_blocks in enumerate(int_arr, 1):
-        num_blocks = int(num_blocks)
-        for i in range(max_blocks):
-            if i < num_blocks:
-                rect = patches.Rectangle((i, rows - row), 1, 1, linewidth=1, edgecolor='black', facecolor='blue')
-                ax.add_patch(rect)
-
-    ax.set_xlim(0, max_blocks)
-    ax.set_ylim(0, rows)
-    ax.set_aspect('equal')
-    plt.axis('off')
-    plt.title("Young Diagram for lambda = BLAH")
-    # plt.title(r'\textbf{time (s)}')
-    # plt.show()
-    fig
-    return fig
-
-setup_button_listeners()
-'''
