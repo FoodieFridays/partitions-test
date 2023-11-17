@@ -190,7 +190,7 @@ async def display_output(*args, **kwargs):
 
 setup_button_listeners()
 
-    '''
+'''
     # plt.rcParams['text.usetex'] = True        # Added for LaTeX
 
     text = Element('input-1').element.value
@@ -214,4 +214,4 @@ setup_button_listeners()
     plt.show()
     fig
     return fig
-    '''
+'''
