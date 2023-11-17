@@ -40,22 +40,23 @@
         Furthermore, given an integral pyramid, its corresponding Young diagram can be obtained through reversing the steps described above.<br><br>
         
         Remarks:
-	    As illustrated above, there is a one-to-one correspondence (a bijection) between partitions and integral pyramids. A given partition will yield a unique integral pyramid, and vice-versa.
-        Integral pyramids can be extended to be compatible with values in \(\mathbb{R}\), unlike partitions and Young diagrams which are restricted to values in $\mathbb{Z}$. We let \(\mathbb{R}\)-pyramids and \(\mathbb{Z}\)-pyramids be the notation to distinguish integral pyramids with values in \(\mathbb{R}\) from those in \(\mathbb{Z}\), respectively.
+	    As illustrated above, there is a one-to-one correspondence (a bijection) between partitions and integral pyramids. A given partition will yield a unique integral pyramid, and vice-versa.<br><br>
+        Integral pyramids can be extended to be compatible with values in \(\mathbb{R}\), unlike partitions and Young diagrams which are restricted to values in \(\mathbb{Z}\).<br><br>
+		We let \(\mathbb{R}\)-pyramids and \(\mathbb{Z}\)-pyramids be the notation to distinguish integral pyramids with values in \(\mathbb{R}\) from those in \(\mathbb{Z}\), respectively.
 
         <h3>The Partition Generating Function:</h3>
         The generating function of \(P_n\) is given by $$F(x)=\frac{1}{(1-x)(1-x^2)(1-x^3)\cdots}=1+\sum_{}^{\infty}P_n x^n$$
 	
     	We can write this infinite product as $$(1+x+x^2+...)(1+x^2+x^4+...)(1+x^3+x^6+...)=\prod_{i=1}^{\infty}\sum_{j=0}^{\infty} (x^j)^i$$
     	
-    	Note that for a given \(n\), \(P_n\) can be determined through finding the coefficient for the \(x^n\) term. This only involves multiplying a finite number of polynomials, and the minimum expansion required is given by constructing the products above with \(x^n\) as the maximum term within each sum.
+    	Note that for a given \(n\), \(P_n\) can be determined through finding the coefficient for the \(x^n\) term. This only involves multiplying a finite number of polynomials, and the minimum expansion required is given by constructing the products above with \(x^n\) as the maximum term within each sum.<br><br>
     	
     	For example, given weight \(n=8\), \(P_n\) can be determined through the computing the product of the following terms of the partition generating function:
     	
     	$$(1+x+x^2+x^3+...+x^8)(1+x^2+x^4+...+x^8)(1+x^3+x^6)(1+x^4+x^8)(1+x^5)(1+x^6)(1+x^7)(1+x^8)$$
     	$$=1+x+2x^2+3x^3+5x^4+7x^5+11x^6+15x^7+22x^8+...+x^{56}$$
     	
-    	Since the coefficient of the \(x^8\) term is \(22\), this means that \(P_8 = 22\). Note that this gives a way to compute \(P_n\) without the use of recursion, which was our previous method of computation.
+    	Since the coefficient of the \(x^8\) term is \(22\), this means that \(P_8 = 22\). Note that this gives a way to compute \(P_n\) without the use of recursion, which was our previous method of computation.<br><br>
     	
     	Moreover, it is important to note that although more terms than our desired \(x^8\) appear in the finite sum, we cannot assume the coefficients for the terms that follow (i.e., for the \(x^9, x^{10}, ..., x^{56}\) terms) correspond to \(P_n\). To compute one of these later terms, the product must be computed again, with the term of interest included.
             
