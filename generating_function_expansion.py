@@ -67,7 +67,7 @@ async def display_output(*args, **kwargs):
         result = numpy.polymul(result, polynomials_numpy[i])[0]
     
     str_result = str(result)
-    p_n = float(str_result[str_result.find("x**" + str(n - 1)) + len("x**" + str(n)) + 3:str_result.find("x**" + str(n))])
+    # p_n = float(str_result[str_result.find("x**" + str(n - 1)) + len("x**" + str(n)) + 3:str_result.find("x**" + str(n))])        ### COMMENTED OUT
     
     # print("\nPolynomial Expansion:\n")
     # print(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
