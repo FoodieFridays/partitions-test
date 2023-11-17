@@ -67,25 +67,33 @@ async def display_output(*args, **kwargs):
 
     text = Element('input-1').element.value
 
-    arr = []
+    text_arr = text.split(",")
+    int_arr = []
 
-    for i in range(len(text)):
-        arr.append(int(text[i]))
+    for num in text_arr:
+        int_arr.append(int(num))
+
+    int_arr.sort(reverse=True)
+
+    rows = len(int_arr)
+    max_blocks = max(map(int, int_arr))
 
     fig, ax = plt.subplots()
-    current_x = 0
 
-    for block_height in arr:
-        rect = patches.Rectangle((current_x, 0), 1, block_height, linewidth=2, edgecolor='black', facecolor='blue')
-        ax.add_patch(rect)
-        current_x += 1
+    for row, num_blocks in enumerate(int_arr, 1):
+        num_blocks = int(num_blocks)
+        for i in range(max_blocks):
+            if i < num_blocks:
+                rect = patches.Rectangle((i, rows - row), 1, 1, linewidth=1, edgecolor='black', facecolor='blue')
+                ax.add_patch(rect)
 
-    ax.set_xlim(0, current_x)
-    ax.set_ylim(0, max(arr))
-    ax.set_aspect('equal', adjustable='box')
-    ax.axis('off')
-
-    plt.show()
+    ax.set_xlim(0, max_blocks)
+    ax.set_ylim(0, rows)
+    ax.set_aspect('equal')
+    plt.axis('off')
+    plt.title("Young Diagram for lambda = BLAH")
+    # plt.title(r'\textbf{time (s)}')
+    # plt.show()
     fig
     return fig
 
