@@ -73,6 +73,7 @@ async def display_output(*args, **kwargs):
     # print(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
     # print("Thus, the number of integer partitions of weight n=" + str(n) + " is " + str(p_n))
 
-    output_box.write(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
+    # output_box.write(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
+    output_box.write("Hello")
 
 setup_button_listeners()
