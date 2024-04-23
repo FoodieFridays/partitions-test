@@ -75,6 +75,6 @@ async def display_output(*args, **kwargs):
 
     # output_box.write(str_result[:str_result.find("x**" + str(n)) + len("x**" + str(n))] + " + ... [inaccurate higher degree terms]")
     # output_box.write("Hello")
-    output_box.write(str_result + "\n\n(The coefficients are accurate up to the x**" + str(n) + " term.")
+    output_box.write(str_result + "\n\n(The coefficients are accurate up to the x**" + str(n) + " term.)")
 
 setup_button_listeners()
